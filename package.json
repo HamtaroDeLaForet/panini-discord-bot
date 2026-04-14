@@ -1,0 +1,27 @@
+{
+  "name": "panini-discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HamtaroDeLaForet/panini-discord-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/HamtaroDeLaForet/panini-discord-bot/issues"
+  },
+  "homepage": "https://github.com/HamtaroDeLaForet/panini-discord-bot#readme",
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "discord.js": "^14.26.3",
+    "dotenv": "^17.4.2",
+    "node-fetch": "^3.3.2"
+  }
+}
