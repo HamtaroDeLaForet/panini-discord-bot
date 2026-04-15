@@ -19,9 +19,14 @@
   },
   "homepage": "https://github.com/HamtaroDeLaForet/panini-discord-bot#readme",
   "dependencies": {
+    "better-sqlite3": "^12.9.0",
     "cross-env": "^10.1.0",
+    "csv-parse": "^6.2.1",
     "discord.js": "^14.26.3",
     "dotenv": "^17.4.2",
     "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

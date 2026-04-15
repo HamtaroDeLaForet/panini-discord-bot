@@ -1,7 +1,12 @@
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
+import dotenv from 'dotenv';
+dotenv.config();
+import fs from 'fs';
+import path from 'path';
+import { Client, GatewayIntentBits, Collection } from 'discord.js';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds]
@@ -14,8 +19,8 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath);
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
+    const command = await import(`./commands/${file}`);
+    client.commands.set(command.default.data.name, command.default);
 }
 
 client.once('ready', () => {
@@ -27,14 +32,13 @@ client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
     const command = client.commands.get(interaction.commandName);
-
     if (!command) return;
 
     try {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({ content: '❌ Error executing command', ephemeral: true });
+        await interaction.reply({ content: '❌ Erreur lors de l\'exécution', ephemeral: true });
     }
 });
 
